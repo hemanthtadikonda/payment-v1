@@ -40,6 +40,17 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
+          env:
+            -  name: CART_HOST
+               value: 'cart'
+            -  name: USER_HOST
+               value: 'user'
+            -  name: USER_PORT
+               value: '8080'
+            -  name: CART_PORT
+               value: '8080'
+            -  name: AMQP_HOST
+               value: 'rabbitmq'
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
           readinessProbe:
